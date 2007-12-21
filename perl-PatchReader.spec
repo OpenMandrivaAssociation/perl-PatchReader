@@ -11,6 +11,7 @@ Group:		Development/Perl
 Summary:	Utilities to read and manipulate patches and CVS 
 URL:		http://search.cpan.org/dist/%{module}
 Source:		http://www.cpan.org/modules/by-module/PatchReader/%{module}-%{version}.tar.bz2
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 %if %{mdkversion} < 1010
 BuildRequires:	perl-devel
 %endif
