@@ -1,7 +1,7 @@
 %define	module	PatchReader
 %define	name	perl-%{module}
 %define version 0.9.5
-%define release %mkrel 8
+%define release %mkrel 9
 
 Name:		%{name}
 Version:	%{version}
