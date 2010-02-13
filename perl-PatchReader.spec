@@ -1,21 +1,23 @@
-%define	module	PatchReader
-%define	name	perl-%{module}
-%define version 0.9.5
-%define release %mkrel 9
+%define	upstream_name	 PatchReader
+%define upstream_version 0.9.5
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-License:	GPL or Artistic
-Group:		Development/Perl
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 10
+
 Summary:	Utilities to read and manipulate patches and CVS 
-URL:		http://search.cpan.org/dist/%{module}
-Source:		http://www.cpan.org/modules/by-module/PatchReader/%{module}-%{version}.tar.bz2
-BuildRoot:	%{_tmppath}/%{name}-%{version}
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/PatchReader/%{upstream_name}-%{upstream_version}.tar.bz2
+
 %if %{mdkversion} < 1010
 BuildRequires:	perl-devel
 %endif
+
 BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
+
 Obsoletes:	perl-patchreader
 Provides:	perl-patchreader
 
@@ -25,7 +27,7 @@ together a variety of objects that read, manipulate, and output patch
 information.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 chmod 644 Changes README
 find . -type f -exec perl -pi -e 'tr/\r//d' {} \;
 
@@ -34,7 +36,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
-make test
+%make test
 
 %install
 rm -rf %{buildroot}
@@ -49,4 +51,3 @@ rm -rf %{buildroot}
 %{perl_vendorlib}/PatchReader
 %{perl_vendorlib}/PatchReader.pm
 %{_mandir}/man3/*
-
