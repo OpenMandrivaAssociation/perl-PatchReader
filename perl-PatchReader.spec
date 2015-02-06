@@ -3,7 +3,7 @@
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	12
+Release:	13
 
 Summary:	Utilities to read and manipulate patches and CVS 
 License:	GPL+ or Artistic
